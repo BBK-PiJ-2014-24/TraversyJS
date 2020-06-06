@@ -76,7 +76,7 @@ h2 {
   visibility: hidden;
 }
 
-.form-control small error {
+.form-control.error small {
   visibility: visible;
 }
 
