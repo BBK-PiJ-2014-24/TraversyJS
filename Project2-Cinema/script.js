@@ -5,6 +5,10 @@ const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie"); // dropdown selector menu
 let ticketPrice = +movieSelect.value; // + converts to string
 
+// Restore Local Stored Data
+// --------------------------
+restoreData();
+
 // EventListeners
 // --------------
 // SEAT SELECT EVENT
@@ -29,7 +33,7 @@ movieSelect.addEventListener("change", (e) => {
 // Handlers
 // ---------
 
-const updateSelectedCount = () => {
+function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected"); //Generates a Node List
   // find the selected seats:
   // 1. take selected seats array
@@ -42,9 +46,28 @@ const updateSelectedCount = () => {
   const selectedSeatsCount = selectedSeats.length;
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
-};
+}
 
-const storeMovieData = (movieIndex, moviePrice) => {
+// Save Data to Local Storage
+function storeMovieData(movieIndex, moviePrice) {
   localStorage.setItem("selectedMovieIndex", movieIndex);
   localStorage.setItem("selectedMoviePrice", moviePrice);
-};
+}
+
+// You must use old style notation if you want to call function ahead of initialization
+function restoreData() {
+  const selectedSeats = JSON.parse(localStorage.getItem("selectedSeats")); // JSON.parse reverses JSON.Stringify
+  if (selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if (selectedSeats.indexOf(index) > -1) {
+        seat.classList.add("selected");
+      }
+    });
+  }
+  const selectedMovieIndex = localStorage.getItem("selectedMovieIndex");
+  if (selectedMovieIndex !== null) {
+    movieSelect.selectedIndex = selectedMovieIndex;
+  }
+}
+
+updateSelectedCount();
