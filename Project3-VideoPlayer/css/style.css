@@ -52,7 +52,7 @@ btn:focus {
 }
 
 .controls .fa-pause {
-  columns: white;
+  color: white;
 }
 
 .controls .timestamp {
