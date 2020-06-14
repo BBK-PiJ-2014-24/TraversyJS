@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+      integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>ModalForm</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="https:randomuser.me/api/portraits/men/76.jpg" alt="user" />
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Me</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header>
+      <button class="toggle" id="toggle">
+        <i class="fa fa-bars fa-2x"></i>
+      </button>
+      <h1>The Landing Page</h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, alias!
+      </p>
+      <button class="cta-btn" id="open">Sign Up</button>
+    </header>
+    <div class="container">
+      <h2>What this Landing Page is About</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vel
+        molestias eligendi. Autem porro quasi cumque at itaque sunt illo placeat
+        ipsa, tenetur veniam aperiam odit aut nemo incidunt velit!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae
+        doloremque asperiores illum obcaecati sunt soluta praesentium maiores
+        earum expedita dolore.
+      </p>
+      <h2>Tell Me More</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum maxime
+        eaque architecto odit magni corporis assumenda, aliquid earum incidunt
+        amet quo nulla vel iure? Quasi soluta quae obcaecati ab praesentium
+        eaque dolores laboriosam fuga excepturi, fugiat itaque quaerat atque
+        nesciunt.
+      </p>
+      <h2>Benefits</h2>
+      <ul>
+        <li>Lifetime Access</li>
+        <li>30 Day Money Back</li>
+        <li>Tailored Customer Support</li>
+      </ul>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut
+        praesentium quisquam ipsam inventore dolore perspiciatis vero ipsum
+        culpa, blanditiis unde maiores itaque atque quaerat suscipit nam
+        veritatis nisi beatae fuga magnam accusantium reprehenderit soluta
+        animi. Laudantium dolores, illo neque sit, in hic quae a, enim sed fugit
+        expedita! Laudantium eius quam accusantium nesciunt, laborum unde
+        sapiente quae commodi dolor rerum dolore magni, amet est odit. Dolores
+        aliquid dicta magnam qui.
+      </p>
+    </div>
+    <div class="modal-container" id="modal">
+      <div class="modal">
+        <button class="close-btn" id="close">
+          <i class="fa fa-times"></i>
+        </button>
+        <div class="modal-header">
+          <h3>Sign Up!</h3>
+        </div>
+        <div class="modal-content">
+          <p>Register for Offers and Support</p>
+          <form action="modal-form">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Name" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="email" />
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Password" />
+            </div>
+            <div>
+              <label for="password2">Confirm Password</label>
+              <input
+                type="password"
+                id="password2"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <input type="submit" value="Submit" class="submit-btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
