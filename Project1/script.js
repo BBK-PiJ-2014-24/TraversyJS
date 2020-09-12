@@ -19,8 +19,8 @@ form.addEventListener("submit", (e) => {
 // Validation Handler Functions
 // ----------------------------
 const showError = (input, message) => {
-  const parentElement = input.parentElement;
-  parentElement.className = "form-control error";
+  const parentElement = input.parentElement; // get the parent of this DOM element = <div class=form-control"
+  parentElement.className = "form-control error"; // Add error class to element
   const smallTag = parentElement.querySelector("small");
   smallTag.innerText = message;
 };
