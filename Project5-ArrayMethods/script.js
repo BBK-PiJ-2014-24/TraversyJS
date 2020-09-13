@@ -5,7 +5,8 @@ const showMillionairesBtn = document.getElementById("show-millionaires");
 const sortBtn = document.getElementById("sort");
 const calculateWealthBtn = document.getElementById("calculate-wealth");
 
-let data = [];
+let data = []; // Declare Data Array for storing user objects
+
 getRandomUser();
 getRandomUser();
 getRandomUser();
@@ -23,7 +24,8 @@ calculateWealthBtn.addEventListener("click", totalWealth);
 async function getRandomUser() {
   const res = await fetch("https://randomuser.me/api");
   const data = await res.json();
-  const user = data.results[0]; //key=results
+  const user = data.results[0]; // API returns an object, which includes a results array that has just one item
+  // create new object for the  user
   const newUser = {
     name: `${user.name.first} ${user.name.last}`,
     money: Math.floor(Math.random() * 1000000),
@@ -46,11 +48,12 @@ function updateDOM(providedData = data) {
   main.innerHTML = `<h2><strong>Person</strong> Wealth</h2>`;
 
   providedData.forEach((item) => {
-    const element = document.createElement("div");
-    element.classList.add("person");
+    const element = document.createElement("div"); // create div
+    element.classList.add("person"); // add person class to div
     element.innerHTML = `<strong> ${item.name}</strong> ${formatMoney(
       item.money
-    )}`;
+    )}`; // add HTML to created Div
+
     main.appendChild(element); // main is the parent element
   });
 }
