@@ -18,6 +18,10 @@ body {
   padding: 20px;
 }
 
+.money-img {
+  width: 150px;
+}
+
 h1 {
   color: var(--primary-color);
 }
@@ -26,24 +30,13 @@ p {
   text-align: center;
 }
 
-.btn {
-  color: #fff;
-  background: var(--primary-color);
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
-  padding: 5px 12px;
-}
-
-.money-img {
-  width: 150px;
-}
-
+/* contains the dropdown and the fx amount */
+/* flex on row */
 .currency {
-  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 0;
 }
 
 .currency select {
@@ -61,16 +54,26 @@ p {
 }
 
 .currency input {
-  border: 0;
   background: color;
   font-size: 30px;
   text-align: right;
+  border: 0;
 }
 
+/* contains the swap button and the FX rate */
 .swap-rate-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.btn {
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 12px;
 }
 
 .rate {
