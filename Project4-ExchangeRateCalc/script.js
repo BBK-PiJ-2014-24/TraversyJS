@@ -1,3 +1,4 @@
+// Define Elements in JS
 const currencyEl_one = document.getElementById("currency-one");
 const currencyEl_two = document.getElementById("currency-two");
 const amount_one = document.getElementById("amount-one");
@@ -18,7 +19,8 @@ function calculate() {
   const currency_two = currencyEl_two.value;
 
   fetch(`https://api.exchangeratesapi.io/latest/`)
-    .then((res) => res.json())
+    .then((res) => res.json()) // convert res obj to a json obj
+    // data is now the json obj
     .then((data) => {
       let rate1 = 1.0;
       let rate2 = 1.0;

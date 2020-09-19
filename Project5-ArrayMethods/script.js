@@ -1,3 +1,5 @@
+// Reference Dom Elements in JS
+// ----------------------------
 const main = document.getElementById("main");
 const addUserBtn = document.getElementById("add-user");
 const doubleBtn = document.getElementById("double");
@@ -19,7 +21,7 @@ sortBtn.addEventListener("click", sortData);
 showMillionairesBtn.addEventListener("click", filterMillionaires);
 calculateWealthBtn.addEventListener("click", totalWealth);
 
-//Fetch user data from API
+// Fetch user data from API
 // -----------------------
 async function getRandomUser() {
   const res = await fetch("https://randomuser.me/api");
@@ -44,7 +46,7 @@ function addData(obj) {
 // Render List to DOM
 // ------------------
 function updateDOM(providedData = data) {
-  // clear main div
+  // New Title
   main.innerHTML = `<h2><strong>Person</strong> Wealth</h2>`;
 
   providedData.forEach((item) => {
