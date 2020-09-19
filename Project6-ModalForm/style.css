@@ -141,7 +141,6 @@ button:focus {
 /* Overrides display:none */
 .modal-container.show-modal {
   display: block;
-  opacity: 1;
 }
 
 .modal {
