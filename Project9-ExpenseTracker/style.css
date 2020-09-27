@@ -40,13 +40,14 @@ h4 {
   text-transform: uppercase;
 }
 
+/* Income-Expense Container */
 .inc-exp-container {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  padding: 20px;
   display: flex;
   justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
   margin: 20px;
+  box-shadow: var(--box-shadow);
 }
 
 .inc-exp-container > div {
@@ -72,34 +73,8 @@ h4 {
   color: #c0392b;
 }
 
-label {
-  display: inline-block;
-  margin: 10px 0;
-}
-
-input[type="text"],
-input[type="number"] {
-  border: 1px solid #dedede;
-  border-radius: 2px;
-  display: block;
-  font-size: 16px;
-  padding: 10px;
-  width: 100%;
-}
-
-.btn {
-  cursor: pointer;
-  background-color: #9c88ff;
-  box-shadow: var(--box-shadow);
-  color: #fff;
-  border: 0;
-  display: block;
-  font-size: 16px;
-  margin: 10px 0 30px;
-  padding: 10px;
-  width: 100%;
-}
-
+/* Expense/Income List */
+/* ------------------- */
 .list {
   list-style-type: none;
   padding: 0;
@@ -107,14 +82,14 @@ input[type="number"] {
 }
 
 .list li {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  color: #333;
+  position: relative;
   display: flex;
   justify-content: space-between;
-  position: relative;
+  background-color: #fff;
+  color: #333;
   padding: 10px;
   margin: 10px 0;
+  box-shadow: var(--box-shadow);
 }
 
 .list li.plus {
@@ -126,16 +101,16 @@ input[type="number"] {
 }
 
 .delete-btn {
-  cursor: pointer;
-  background-color: #e74c3c;
-  border: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 2px 5px;
   position: absolute;
   top: 50%;
   left: 0;
+  cursor: pointer;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  border: 0;
+  padding: 2px 5px;
   transform: translate(-100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -148,4 +123,34 @@ input[type="number"] {
 .btn:focus,
 .delete-btn:focus {
   outline: 0;
+}
+
+/* Input Form */
+/* ========== */
+label {
+  display: inline-block;
+  margin: 10px 0;
+}
+
+input[type="text"],
+input[type="number"] {
+  display: block;
+  font-size: 16px;
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btn {
+  display: block;
+  cursor: pointer;
+  background-color: #9c88ff;
+  font-size: 16px;
+  color: #fff;
+  border: 0;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+  box-shadow: var(--box-shadow);
 }
