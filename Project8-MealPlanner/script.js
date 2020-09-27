@@ -14,7 +14,7 @@ random.addEventListener("click", getRandomMeal); // Random Button
 
 // LISTENER to Select Meal from Grid of Meals
 mealsEl.addEventListener("click", (e) => {
-  // clicking meal in grid selects multiple divs. Need to select div with class meal-info.
+  // clicking meal in grid selects divs with child div. Need to select child div with class meal-info.
   const mealInfo = e.path.find((item) => {
     if (item.classList) {
       return item.classList.contains("meal-info");
@@ -22,7 +22,6 @@ mealsEl.addEventListener("click", (e) => {
       return false;
     }
   }); // returns div with class "meal-Info" and "data-mealid" that was generated dynamically by searchMeal()
-  console.log(mealInfo);
   if (mealInfo) {
     const mealID = mealInfo.getAttribute("data-mealid");
     getMealById(mealID);
