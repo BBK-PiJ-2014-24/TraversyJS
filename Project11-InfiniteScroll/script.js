@@ -68,6 +68,24 @@ function showLoading() {
   }, 300);
 }
 
+// filterPosts()
+// -------------
+function filterPosts(e) {
+  const term = e.target.value.toUpperCase();
+  const posts = document.querySelectorAll(".post");
+
+  posts.forEach((p) => {
+    const title = p.querySelector(".post-title").innerText.toUpperCase();
+    const body = p.querySelector(".post-body").innerText.toUpperCase();
+
+    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+      p.style.display = "flex";
+    } else {
+      p.style.display = "none";
+    }
+  });
+}
+
 // EventListener - on the Window
 // ============
 // scrollHeight : Total Height of scroll material
@@ -80,3 +98,5 @@ window.addEventListener("scroll", () => {
     showLoading();
   }
 });
+
+filter.addEventListener("input", filterPosts);
