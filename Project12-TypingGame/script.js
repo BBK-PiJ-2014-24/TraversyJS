@@ -117,13 +117,25 @@ text.addEventListener("input", (e) => {
     e.target.value = "";
     addWordToDOM();
     updateScore();
-    if (difficulty === "hard") {
-      time += 2;
-    } else if (difficulty === "medium") {
-      time += 3;
-    } else {
-      time += 5;
+    switch (difficulty) {
+      case "hard":
+        time += 2;
+        break;
+      case "medium":
+        time += 3;
+        break;
+      case "easy":
+        time += 1;
+        break;
     }
+
+    // if (difficulty === "hard") {
+    //   time += 2;
+    // } else if (difficulty === "medium") {
+    //   time += 3;
+    // } else {
+    //   time += 5;
+    // }
     updateGameTime();
   }
 });
