@@ -1,14 +1,84 @@
 // Dom Elements
 // ============
 const mainTag = document.querySelector("main");
-const voiceSelect = document.getElementById("voices");
+const voiceSelectEl = document.getElementById("voices");
 const textarea = document.getElementById("text");
 const readBtn = document.getElementById("read");
 const toggleBtn = document.getElementById("toggle");
 const closeBtn = document.getElementById("close");
 
+// Global Variables & Initializations
+// ===================================
+
+let voices = [];
+const message = new SpeechSynthesisUtterance(); 
+
 // Functions
 // =========
+
+function createBox(item) {
+  const { image, text } = item;
+  const box = document.createElement("div");
+  box.classList.add("box");
+
+  box.innerHTML = `
+    <img src='${image}' alt='${text}' /> 
+    <p class='info'>${text}</p>
+  `;
+
+  box.addEventListener('click', ()=> {
+    setTextMessage(text);
+    speakText();
+    box.classList.add('active');
+    setTimeout(()=>{
+      box.classList.remove('active');
+    },800);
+  });
+  mainTag.append(box);
+}
+
+function setTextMessage(text){
+  message.text = text;
+}
+
+function speakText(){
+  speechSynthesis.speak(message);
+}
+
+
+function getVoices() {
+  voices = speechSynthesis.getVoices();
+  voices.forEach((voice) => {
+    const option = document.createElement("option");
+    option.value = voice.name;
+    option.innerText = `${voice.name} ${voice.lang}`;
+
+    voiceSelectEl.appendChild(option);
+  });
+}
+
+function setVoice(e){
+  message.voice = voices.find(voice => voice.name === e.target.value);
+}
+
+// EventListener
+// =============
+toggleBtn.addEventListener("click", () => {
+  document.getElementById("text-box").classList.toggle("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  document.getElementById("text-box").classList.remove("show");
+});
+
+speechSynthesis.addEventListener("voiceschanged", getVoices);
+
+voiceSelectEl.addEventListener('change', setVoice);
+
+readBtn.addEventListener('click',()=>{
+  setTextMessage(textarea.value); 
+  speakText();
+});
 
 // DATA
 // ====
@@ -65,15 +135,4 @@ const data = [
 
 data.forEach(createBox);
 
-function createBox(item) {
-  const { image, text } = item;
-  const box = document.createElement("div");
-  box.classList.add("box");
-
-  box.innerHTML = `
- <img src='${image}' alt='${text}' /> 
- <p class='info'>${text}</p>
-  `;
-
-  mainTag.append(box);
-}
+getVoices();
