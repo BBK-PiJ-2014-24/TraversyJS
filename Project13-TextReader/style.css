@@ -15,11 +15,13 @@ h1 {
   text-align: center;
 }
 
+/* Page Container */
 .container {
   margin: auto;
   padding: 20px;
 }
 
+/* Buttons */
 .btn {
   cursor: pointer;
   background-color: darksalmon;
@@ -45,6 +47,7 @@ select:focus {
   margin-bottom: 20px;
 }
 
+/* Dropdown window for Voice Selection and Text Input */
 .text-box {
   width: 70%;
   position: absolute;
@@ -56,6 +59,10 @@ select:focus {
   padding: 20px;
   border-radius: 5px;
   transition: all 1s ease-in-out;
+}
+
+.text-box.show {
+  transform: translate(-50%, 0);
 }
 
 .text-box select {
@@ -87,6 +94,7 @@ select:focus {
   text-align: right;
 }
 
+/* Grid layout for photos */
 main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
