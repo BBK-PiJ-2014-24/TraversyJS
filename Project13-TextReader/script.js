@@ -11,21 +11,26 @@ const closeBtn = document.getElementById("close");
 // ===================================
 
 let voices = [];
-const message = new SpeechSynthesisUtterance(); 
+const speechObj = new SpeechSynthesisUtterance(); // instantiate speech object 
 
 // Functions
 // =========
 
+// createBox() - called on each obj within the Data array
+// -----------
+// 1. Create div element for photo container in grid
+// 2. Add classlists 
+// 3. Add innerHTML for img and text
+// 4. Attach an eventListener so that when clicked it will launch speech 
+// 5. Add photo to grid container
 function createBox(item) {
   const { image, text } = item;
-  const box = document.createElement("div");
-  box.classList.add("box");
-
+  const box = document.createElement("div"); // create div element for photos in grig
+  box.classList.add("box");  //add 
   box.innerHTML = `
     <img src='${image}' alt='${text}' /> 
     <p class='info'>${text}</p>
   `;
-
   box.addEventListener('click', ()=> {
     setTextMessage(text);
     speakText();
@@ -37,44 +42,53 @@ function createBox(item) {
   mainTag.append(box);
 }
 
-function setTextMessage(text){
-  message.text = text;
-}
-
-function speakText(){
-  speechSynthesis.speak(message);
-}
-
-
-function getVoices() {
-  voices = speechSynthesis.getVoices();
-  voices.forEach((voice) => {
-    const option = document.createElement("option");
-    option.value = voice.name;
-    option.innerText = `${voice.name} ${voice.lang}`;
-
-    voiceSelectEl.appendChild(option);
-  });
-}
-
-function setVoice(e){
-  message.voice = voices.find(voice => voice.name === e.target.value);
-}
-
+ // setTextMessage() - Passes inputed text to the speechObj 
+  function setTextMessage(text){
+    speechObj.text = text;
+  }
+  
+  // speakText() -- Calls static method to speak inputed Text with speecgObj
+  function speakText(){
+    speechSynthesis.speak(speechObj);
+  }
+  
+// getVoices() - Gets list of speaking voices and puts in option list 
+// -----------
+  function getVoices() {
+    voices = speechSynthesis.getVoices(); // get array of speaking voices from speechSynethesis
+    voices.forEach((voice) => {
+      const option = document.createElement("option");  // create option element
+      option.value = voice.name; // impart value to option tag
+      option.innerText = `${voice.name} - ${voice.lang}`; // Add Text for Option
+      voiceSelectEl.appendChild(option); // Add option to VoiceSelect Element
+    });
+  }
+  getVoices(); // automatically called
+  
+  // setVoice(e) - EventListener Fn to set the selected voice for the speechObj
+  // -----------
+  function setVoice(e){
+    speechObj.voice = voices.find(voice => voice.name === e.target.value);
+  }
+  
 // EventListener
 // =============
+// dropsdown text box
 toggleBtn.addEventListener("click", () => {
   document.getElementById("text-box").classList.toggle("show");
 });
 
+// close text box
 closeBtn.addEventListener("click", () => {
   document.getElementById("text-box").classList.remove("show");
 });
 
 speechSynthesis.addEventListener("voiceschanged", getVoices);
 
+// select voice
 voiceSelectEl.addEventListener('change', setVoice);
 
+// read out text from textbox
 readBtn.addEventListener('click',()=>{
   setTextMessage(textarea.value); 
   speakText();
@@ -135,4 +149,3 @@ const data = [
 
 data.forEach(createBox);
 
-getVoices();
