@@ -13,11 +13,13 @@
 
     <title>Card Reader</title>
   </head>
+
   <body>
-    <button id="clear" class="clear btn">
+    <!-- Clear Cards Button -->
+    <button id="clear" class="btn-clear btn">
       <i class="fas fa-trash"></i>Clear Cards
     </button>
-
+    <!-- Title and ADD btn -->
     <h1>
       Memory Cards
       <button id="show" class="btn btn-small">
@@ -25,7 +27,9 @@
       </button>
     </h1>
 
-    <div id="cards-container" class="cards">
+    <!-- Card Container -->
+    <!-- ============== -->
+    <div id="cards-container" class="cards-container">
       <!-- <div class="card active show-answer">
         <div class="inner-card">
           <div class="inner-card-front">
@@ -48,26 +52,29 @@
       </div> -->
     </div>
 
+    <!-- Card Navigation Arrows -->
     <div class="navigation">
       <button id="prev" class="nav-button">
         <i class="fas fa-arrow-left"></i>
       </button>
 
-      <p id="current"></p>
+      <p id="current-card-number"></p>
 
       <button id="next" class="nav-button">
         <i class="fas fa-arrow-right"></i>
       </button>
     </div>
 
+    <!-- Add New Card Btn -->
     <div id="add-container" class="add-container">
       <h1>
         Add New Card
-        <button id="hide" class="btn btn-small btn-ghost">
+        <button id="hide" class="btn btn-small btn-hide-form">
           <i class="fas fa-times"></i>
         </button>
       </h1>
 
+      <!-- Card Input Form -->
       <div class="form-group">
         <label for="question">Question</label>
         <textarea id="question" placeholder="Enter Question..."></textarea>
