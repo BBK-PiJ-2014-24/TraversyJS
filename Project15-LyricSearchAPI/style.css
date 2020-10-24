@@ -97,6 +97,11 @@ ul.songs li {
   margin: 10px 0;
 }
 
+.container {
+  margin: 30px auto;
+  max-width: 100%;
+  width: 500px;
+}
 .container h2 {
   font-weight: 300;
 }
