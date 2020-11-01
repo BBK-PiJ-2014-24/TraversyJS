@@ -65,5 +65,5 @@ canvas {
 }
 
 .rules.show {
-  transform: translateX(400px);
+  transform: translateX(0);
 }
