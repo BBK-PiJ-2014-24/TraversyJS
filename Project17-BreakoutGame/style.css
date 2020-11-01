@@ -23,6 +23,8 @@ canvas {
   border-radius: 5px;
 }
 
+/* Buttons */
+/* ------- */
 .btn {
   cursor: pointer;
   border: 0;
@@ -50,6 +52,8 @@ canvas {
   left: 30px;
 }
 
+/* Slide Panel for Rules */
+/* --------------------- */
 .rules {
   position: absolute;
   top: 0;
