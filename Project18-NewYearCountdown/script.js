@@ -18,6 +18,9 @@ newyearEl.innerText = currentYear + 1;
 
 // FUNCTIONS
 // =========
+
+// updateCountdown() - Create countdown, hook up to DOM
+// -----------------
 function updateCountdown(){
 
   const currentTime = new Date();
@@ -27,17 +30,19 @@ function updateCountdown(){
   const m = Math.floor(diff/1000/60)%60;
   const s = Math.floor(diff/1000)%60;
 
-  days.innerHTML = d;
-  hours.innerHTML= h < 10 ? '0'+ h : h;  
-  minutes.innerHTML= m < 10 ? '0'+ m : m;  
-  seconds.innerHTML= s < 10 ? '0'+ s : s;  
+  days.innerText = d;
+  hours.innerText= h < 10 ? '0'+ h : h;  
+  minutes.innerText= m < 10 ? '0'+ m : m;  
+  seconds.innerText= s < 10 ? '0'+ s : s;  
 
 }
-
+// Loading Spinner - lasting 1min
+// ---------------
 setTimeout(()=>{
-    loading.remove();
-    countdown.style.display='flex';
+    loading.remove(); // remove spinning gif
+    countdown.style.display='flex'; // reveal countdown display
 },1000);
 
-
+// Start timer
+// -----------
 setInterval(updateCountdown, 1000);
