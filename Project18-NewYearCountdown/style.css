@@ -41,6 +41,7 @@ h1 {
   margin: -80px 0 40px;
 }
 
+/* Display Year in the background */
 .year {
   position: absolute;
   bottom: 20px;
@@ -52,7 +53,7 @@ h1 {
 }
 
 .countdown {
-  /* display: flex; */
+  /* display: flex; to be switched on with JS */
   display: none;
   transform: scale(2);
 }
@@ -69,6 +70,8 @@ h1 {
   margin: 0 0 5px;
 }
 
+/* Media Queries */
+/* ------------- */
 @media (max-width: 500px) {
   h1 {
     font-size: 45px;
