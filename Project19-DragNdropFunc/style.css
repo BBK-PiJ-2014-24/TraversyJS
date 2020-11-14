@@ -20,6 +20,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+/* LIST FORMAT */
+/* =========== */
+
+/* Container for <ul> */
 .draggable-list {
   border: 1px solid var(--border-color);
   color: var(--text-color);
@@ -27,51 +31,59 @@ body {
   list-style-type: none;
 }
 
+/* format for each element */
 .draggable-list li {
-  background-color: #fff;
   display: flex;
   flex: 1;
+  background-color: #fff;
 }
 
 .draggable-list li:not(:last-of-type) {
   border-bottom: 1px solid var(--border-color);
 }
 
+/* List number spanned in <li> */
 .draggable-list .number {
-  background-color: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
   height: 60px;
   width: 60px;
+  font-size: 28px;
+  background-color: var(--background-color);
 }
-
+/* Person's name in <li> */
 .draggable-list .person-name {
   margin: 0 20px 0 0;
 }
 
+/* Color Coding Correct Order */
 .draggable-list li.right .person-name {
   color: #3ae374;
 }
 
+/* Color Coding Incorrect Order */
 .draggable-list li.wrong .person-name {
   color: #ff3838;
 }
 
+/* Background color change as drag element goes over it */
 .draggable-list li.over .draggable {
   background-color: #eaeaea;
 }
 
+/* Class on <li> that are created dynamically */
 .draggable {
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px;
   flex: 1;
+  cursor: pointer;
 }
 
+/* Check Button */
+/* ============ */
 .check-btn {
   background-color: var(--background-color);
   border: none;
