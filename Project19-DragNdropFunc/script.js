@@ -52,7 +52,8 @@ function createList(){
 }
 createList();
 
-
+// addDragEventListeners() - add eventlisteners to array elements so that they have drag n drop functionality
+// -----------------------
 function addDragEventListeners(){
     const draggables = document.querySelectorAll('.draggable');
     const dragListItems = document.querySelectorAll('.draggable-list li');
@@ -62,37 +63,44 @@ function addDragEventListeners(){
     });
 
     dragListItems.forEach((item)=>{
-        item.addEventListener('dragover', dragOver);
-        item.addEventListener('drop', dragDrop);
         item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragover', dragOver);
         item.addEventListener('dragleave', dragLeave);
+        item.addEventListener('drop', dragDrop);
     });
 }
 
+// DRAG n DROP FUNCTIONALITY
+// -------------------------
+// Records the index of selected li element 
 function dragStart(){
-    // console.log('Event: ', 'dragstart');
     dragStartIndex = +this.closest('li').getAttribute('data-index');
     console.log(dragStartIndex);
 }
+// change color of element that is about to be dragged over
 function dragEnter(){
-    // console.log('Event: ', 'dragenter');
     this.classList.add('over');
 }
+
+// remove color of element that is no longer being dragged over
 function dragLeave(){
-    // console.log('Event: ', 'dragleave');
     this.classList.remove('over');
 }
+
+// do nothing during the dragover
 function dragOver(e){
-    // console.log('Event: ', 'dragover');
     e.preventDefault();// prevents the default behaviour which we dont use in this project
 }
+
+// determine the drop index point and swaps the li elements around
 function dragDrop(){
-    // console.log('Event: ', 'drop');
     const dragEndIndex = +this.getAttribute('data-index');
     swapItems(dragStartIndex, dragEndIndex);
     this.classList.remove('over');
 }
 
+// swapItems() - swaps <li> elements in the list
+// -----------
 function swapItems(fromIndex, toIndex){
     const itemOne = listItems[fromIndex].querySelector('.draggable');
 
@@ -102,18 +110,21 @@ function swapItems(fromIndex, toIndex){
     listItems[toIndex].appendChild(itemOne);
 }
 
-checkBtn.addEventListener('click', checkOrder);
-
+// checkOrder() - Color codes the correct and incorrect order of rich people 
+// ------------
 function checkOrder(){
     listItems.forEach((listItem, index)=>{
         const personName = listItem.querySelector('.draggable').innerText.trim();
         if(personName !== richestPeople[index]){
             listItem.classList.add('wrong');
         } else {
-
+            
             listItem.classList.remove('wrong');
             listItem.classList.add('right');
         }
-
+        
     });
 }
+// EVENT LISTENERS 
+// ===============
+checkBtn.addEventListener('click', checkOrder);
