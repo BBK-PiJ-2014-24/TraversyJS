@@ -1,7 +1,7 @@
 // DOM ELEMENTS
 // ============
 const draggable_list = document.getElementById('draggable-list');
-const check = document.getElementById('check');
+const checkBtn = document.getElementById('check-btn');
 
 // GLOBAL VARIABLES
 // ================
@@ -48,5 +48,72 @@ function createList(){
         listItems.push(listItem);    
         draggable_list.appendChild(listItem);
         });
+        addDragEventListeners();
 }
 createList();
+
+
+function addDragEventListeners(){
+    const draggables = document.querySelectorAll('.draggable');
+    const dragListItems = document.querySelectorAll('.draggable-list li');
+
+    draggables.forEach((draggable)=>{
+        draggable.addEventListener('dragstart', dragStart);
+    });
+
+    dragListItems.forEach((item)=>{
+        item.addEventListener('dragover', dragOver);
+        item.addEventListener('drop', dragDrop);
+        item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragleave', dragLeave);
+    });
+}
+
+function dragStart(){
+    // console.log('Event: ', 'dragstart');
+    dragStartIndex = +this.closest('li').getAttribute('data-index');
+    console.log(dragStartIndex);
+}
+function dragEnter(){
+    // console.log('Event: ', 'dragenter');
+    this.classList.add('over');
+}
+function dragLeave(){
+    // console.log('Event: ', 'dragleave');
+    this.classList.remove('over');
+}
+function dragOver(e){
+    // console.log('Event: ', 'dragover');
+    e.preventDefault();// prevents the default behaviour which we dont use in this project
+}
+function dragDrop(){
+    // console.log('Event: ', 'drop');
+    const dragEndIndex = +this.getAttribute('data-index');
+    swapItems(dragStartIndex, dragEndIndex);
+    this.classList.remove('over');
+}
+
+function swapItems(fromIndex, toIndex){
+    const itemOne = listItems[fromIndex].querySelector('.draggable');
+
+    const itemTwo = listItems[toIndex].querySelector('.draggable');
+
+    listItems[fromIndex].appendChild(itemTwo);
+    listItems[toIndex].appendChild(itemOne);
+}
+
+checkBtn.addEventListener('click', checkOrder);
+
+function checkOrder(){
+    listItems.forEach((listItem, index)=>{
+        const personName = listItem.querySelector('.draggable').innerText.trim();
+        if(personName !== richestPeople[index]){
+            listItem.classList.add('wrong');
+        } else {
+
+            listItem.classList.remove('wrong');
+            listItem.classList.add('right');
+        }
+
+    });
+}
